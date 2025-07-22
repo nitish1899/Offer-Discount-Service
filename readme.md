@@ -151,6 +151,7 @@ Returns the best discount given:
 ```
 
 ### 📂 Folder Structure
+```
 src/
 ├── controllers/
 │   └── offer.controller.ts
@@ -161,6 +162,7 @@ src/
 ├── services/
 │   └── offer.service.ts
 ├── index.ts
+```
 
 
 ### Tech Stack
