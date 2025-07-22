@@ -1,7 +1,15 @@
-import { Entity, PrimaryKey, Property, Unique } from "@mikro-orm/core";
+import {
+  Entity,
+  Property,
+  Unique,
+  ManyToMany,
+  Collection,
+} from "@mikro-orm/core";
+import { BaseEntity } from "../base.entity";
+import { Bank } from "./bank.entity";
 
 @Entity()
-export class Offer {
+export class Offer extends BaseEntity {
   @Property()
   @Unique()
   adjustment_id!: string;
@@ -19,10 +27,10 @@ export class Offer {
   provider!: string;
 
   @Property()
-  adjustment_type!: string;
+  adjustment_sub_type!: string;
 
   @Property()
-  adjustment_sub_type!: string;
+  adjustment_type!: string;
 
   @Property()
   adjustment_status!: string;
@@ -45,12 +53,20 @@ export class Offer {
   @Property({ nullable: true })
   max_txns_for_offer?: number;
 
-  @Property({ nullable: true })
-  payment_instrument?: string;
+  @Property({ type: "text[]", nullable: true })
+  payment_instrument?: string[];
 
-  @Property({ nullable: true })
-  bank_name?: string;
+  @Property({ type: "text[]", nullable: true })
+  emi_months?: string[];
+
+  @ManyToMany(() => Bank, (bank) => bank.offers, { owner: true })
+  banks = new Collection<Bank>(this);
 
   @Property({ default: true })
   is_active!: boolean;
+
+  constructor(data: Partial<Offer> = {}) {
+    super();
+    Object.assign(this, data);
+  }
 }

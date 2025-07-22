@@ -11,9 +11,9 @@ export abstract class BaseEntity {
   @PrimaryKey({ type: 'uuid' })
   id: string = uuidv4();
 
-  @Property({ type: 'timestamptz', onCreate: () => new Date() })
+  @Property({ type: 'timestamptz' })
   createdAt: Date = new Date();
 
-  @Property({ type: 'timestamptz', onUpdate: () => new Date(), nullable: true })
+  @Property({ type: 'timestamptz', onUpdate: () => new Date() })
   updatedAt: Date = new Date();
 }

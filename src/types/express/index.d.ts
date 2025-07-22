@@ -1,11 +1,9 @@
-// src/types/express/index.d.ts
+// src/types/express.d.ts
+import { EntityManager } from "@mikro-orm/core";
+import { Request } from "express";
 
-import { EntityManager } from '@mikro-orm/core';
-
-declare global {
-  namespace Express {
-    interface Request {
-      orm: EntityManager;
-    }
+declare module "express-serve-static-core" {
+  interface Request {
+    orm: EntityManager;
   }
 }
