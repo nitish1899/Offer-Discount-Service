@@ -155,13 +155,25 @@ Returns the best discount given:
 src/
 ├── controllers/
 │   └── offer.controller.ts
+├── database/
+│   └── db.ts
 ├── entities/
 │   └── offer.entity.ts
+│   └── bank.entity.ts
+├── repositories/
+│   └── offer.repository.ts
 ├── routes/
 │   └── offer.routes.ts
 ├── services/
 │   └── offer.service.ts
+├── types/express
+│   └── index.ts
+├── utils/
+│   └── errorHandler.ts
+├── app.ts
+├── base.entity.ts
 ├── index.ts
+├── mikro-orm.config.ts
 ```
 
 
